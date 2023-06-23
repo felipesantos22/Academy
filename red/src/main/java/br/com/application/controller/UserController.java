@@ -13,7 +13,6 @@ public class UserController {
     public UserController(UserService userService) {
         this.userService = userService;
     }
-
     @GetMapping
     public ResponseEntity<List<User>> readController(){
         List<User> list = userService.readService();
