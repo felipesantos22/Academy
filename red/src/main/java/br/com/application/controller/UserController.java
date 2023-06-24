@@ -38,5 +38,21 @@ public class UserController {
         return ResponseEntity.ok().body(user);
     }
 
+    /*@PutMapping("/{id}") Forma simplificada de fazer update
+    public Optional<User> updateController(@PathVariable Long id, @RequestBody User user){
+        return userService.updateService(id, user);
+    }*/
+
+    @PutMapping("/{id}")
+    public ResponseEntity<User> updateController(@PathVariable Long id, @RequestBody User user){
+        return userService.updateService(id, user).map(newUser -> {
+            return ResponseEntity.ok().body(newUser);
+        }).orElse(ResponseEntity.notFound().build());
+    }
+
+    @DeleteMapping("/{id}")
+    public Optional<User> deleteController(@PathVariable Long id){
+       return userService.deleteUser(id);
+    }
 
 }
