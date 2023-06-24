@@ -17,6 +17,12 @@ public class UserController {
     public ResponseEntity<List<User>> readController(){
         List<User> list = userService.readService();
         return  ResponseEntity.ok().body(list);
+
+    }
+    @PostMapping
+    public ResponseEntity<User> createController(@RequestBody User user){
+        userService.createService(user);
+        return ResponseEntity.ok().body(user);
     }
 
 

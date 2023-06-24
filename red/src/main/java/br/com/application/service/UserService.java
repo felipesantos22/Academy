@@ -16,6 +16,10 @@ public class UserService {
         return  userRepository.findAll();
     }
 
+    public User createService(User user){
+        return userRepository.save(user);
+    }
+
 
 
 }
